@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head> 
+<body>
+    
+    <div id="result"></div>
+</body>
+
+
+<script>
+
+// 🔷 1차 키 발급 
+    // 내가 발급받은 accessKey
+        // let accesKey_hm='9daxtqe6Pm7PIsjbFlKez7ojV-SYYgFy-g1m9b6y5ds'
+        // let accesKey_dd='TNEwLiMJgog8shYv7-R3l6bH5cLNeinpdRVlNyYZGRA'
+
+
+    // `https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY` 형식에서 accecc_key 추가
+        // const url = 'https://api.unsplash.com/photos/users/chrislawton/collections/X-Ratelimit-Limit:1?client_id=9daxtqe6Pm7PIsjbFlKez7ojV-SYYgFy-g1m9b6y5ds';
+        // const url = 'https://api.unsplash.com/photos/random?client_id=TNEwLiMJgog8shYv7-R3l6bH5cLNeinpdRVlNyYZGRA';
+        // const url = 'https://api.unsplash.com/photos/random?client_id=TNEwLiMJgog8shYv7-R3l6bH5cLNeinpdRVlNyYZGRA';     // GET /photos/random
+        // const url = 'https://api.unsplash.com/photos/collections/?client_id=TNEwLiMJgog8shYv7-R3l6bH5cLNeinpdRVlNyYZGRA';     // GET /collections/:id
+        const url = 'https://api.unsplash.com/photos/misunderstoodwhiskey/?client_id=cOiawfZPN2VNBNgX2-4EU_cXQV4boXVRm92elTm9ivQ';     // GET /search/photos
+        
+
+        
+
+    // fetech 로 넣어서 -> 객체로 반환하기
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            // 결과를 DOM에 표시
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = JSON.stringify(data);
+
+            // data 객체에 담겨 있음. 
+            console.log(data);
+        })
+        .catch(error => console.error(error));
+        
+
+
+// // 🔷 get 방식 테스트 
+//     // 내가 발급받은 accessKey
+//         // let accesKey='9daxtqe6Pm7PIsjbFlKez7ojV-SYYgFy-g1m9b6y5ds'
+
+//     // `https://api.unsplash.com/photos/?client_id=YOUR_ACCESS_KEY` 형식에서 accecc_key 추가
+//         const url = 'https://api.unsplash.com/photos/?client_id=9daxtqe6Pm7PIsjbFlKez7ojV-SYYgFy-g1m9b6y5ds';
+        
+//     // fetech 로 넣어서 -> 객체로 반환하기
+//         fetch(url, {
+
+//             method: 'POST', 
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }, 
+//             body: JSON.stringify ({
+//                 username: 'Danielle Lavallee'
+//             })
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             // 결과를 DOM에 표시
+//             const resultElement = document.getElementById('result');
+//             resultElement.innerHTML = JSON.stringify(data);
+
+//             // data 객체에 담겨 있음. 
+//             console.log(data);
+//         })
+//         .catch(error => console.error(error));
+
+
+// // 🔷 GET 방식으로 가져와보기
+
+//     // const url = 'https://api.unsplash.com/photos/?client_id=9daxtqe6Pm7PIsjbFlKez7ojV-SYYgFy-g1m9b6y5ds';
+//     // GET /users/:username/collections
+
+//     const getUrl = 'https://api.unsplash.com/users/Danielle/collections/?client_id=9daxtqe6Pm7PIsjbFlKez7ojV-SYYgFy-g1m9b6y5ds'   // 요청할 API의 URL
+//     const xhr = new XMLHttpRequest();
+
+//     xhr.open("GET", getUrl, true);
+
+//     xhr.onload = function() {
+//     if (this.status === 200) { // HTTP 상태코드가 200인 경우 (성공적인 응답)
+//         const responseData = JSON.parse(this.responseText); // 응답 데이터를 JSON 객체로 파싱
+//         console.log(responseData); // 파싱된 데이터를 콘솔에 출력
+//     }
+//     }
+
+//     xhr.send();
+
+
+
+
+
+</script>
+
+</html>
